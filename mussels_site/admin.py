@@ -1,6 +1,13 @@
 from django.contrib import admin
 from .models import Team, Owner, Coach, Player, Program, Event, Location, Clinic, Schedule, Contact, Contact_Content, Partnership
 
+admin.AdminSite.site_header = "Coach Manager"
+
+
+
+
+
+
 
 # Register your models here.
 admin.site.register(Team)
