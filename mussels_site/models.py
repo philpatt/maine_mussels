@@ -34,8 +34,8 @@ class Coach(models.Model):
     Team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
     def __str__(self):
-        return (self.Lastname, self.Firstname)
-        
+        return (self.Last_Name, self.First_Name)
+
 class Program(models.Model):
     Program_Title = models.CharField(max_length=200)
     Cost = models.CharField(max_length=200)
@@ -57,10 +57,7 @@ class Player(models.Model):
     Program = models.ForeignKey(Program, on_delete=models.CASCADE)
 
     def __str__(self):
-        return (self.lastname, self.firstname)
-
-
-
+        return (self.Last_Name, self.First_Name, self.Team)
 
 class Event(models.Model):
     Event_Title = models.CharField(max_length=200)

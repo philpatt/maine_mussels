@@ -1,14 +1,14 @@
 from django.contrib import admin
 from .models import Team, Owner, Coach, Player, Program, Event, Location, Clinic, Scheduled_Event, Contact, Partnership
 
-admin.AdminSite.site_header = "Coach Manager"
+admin.AdminSite.site_header = "Team Manager"
 
 # #Change order of entries
 
 # Make field sets
 class TeamAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Add Team', {'fields': [
+        ('Add Team Form', {'fields': [
             'Team_Name',
             'Season',
             'Team_Description',
@@ -18,7 +18,7 @@ class TeamAdmin(admin.ModelAdmin):
 
 class OwnerAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Add Owner', {'fields':[
+        (None, {'fields':[
             'First_Name',
             'Last_Name',
             'Owner_Bio_1',
@@ -30,27 +30,30 @@ class OwnerAdmin(admin.ModelAdmin):
 
 class CoachAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Add Coach', {'fields': [
+        ('Add Coach Form', {'fields': [
+            'Team',            
             'First_Name',
             'Last_Name',
             'Coach_Bio',
-            'Coach_Image'
+            'Coach_Image',
         ]})
     ]
 
 class PlayerAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Add Player', {'fields': [
+        ('Add Player Form', {'fields': [  
+            'Team',
+            'Program',
             'First_Name',
             'Last_Name',
             'Position',
-            'Jersey_Number'
+            'Jersey_Number',
         ]})
     ]
 
 class ProgramAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Add Program', {'fields': [
+        ('Add Program Form', {'fields': [
             'Program_Title',
             'Cost',
             'Start_Date',
@@ -58,12 +61,12 @@ class ProgramAdmin(admin.ModelAdmin):
             'Program_Image',
             'Program_Detail_1',
             'Program_Detail_2'
-            ]})
+        ]})
     ]
 
 class EventAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Add Event', {'fields': [
+        ('Add Event Form', {'fields': [
             'Event_Title',
             'Event_Description'
         ]})
@@ -71,11 +74,58 @@ class EventAdmin(admin.ModelAdmin):
 
 class LocationAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Add Location', {'fields': [
+        ('Add Location Form', {'fields': [
             'Location_Name',
             'Location_Address'
         ]})
     ]
+
+class ClinicAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Clinic Form', {'fields': [
+            'Clinic_Title',
+            'Cost',
+            'Start_Time',
+            'End_Time',
+            'Start_Date',
+            'End_Date',
+            'Clinic_Image',
+            'Clinic_Detail_1'
+        ]})
+    ]
+
+class ScheduledEventAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Clinic Form', {'fields': [
+            'Team',
+            'Program',
+            'Event',
+            'Clinic',
+            'Location',
+            'Stat_Time',
+            'End_Time',
+            'Stat_Date',
+            'End_Date',
+            'Cost'
+        ]})
+    ]
+class ContactAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Contact (Facebook, email, etc.) Form', {'fields': [
+            'Contact_Type',
+            'Contact_Url',
+            'Contact_Number',
+        ]})
+    ]
+class PartnershipAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Partner/Sponsors Form', {'fields': [
+            'Contact_Type',
+            'Contact_Url',
+            'Contact_Number',
+        ]})
+    ]
+
 
 
 
@@ -87,10 +137,10 @@ admin.site.register(Player, PlayerAdmin)
 admin.site.register(Program, ProgramAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Location, LocationAdmin)
-admin.site.register(Clinic)
-admin.site.register(Scheduled_Event)
-admin.site.register(Contact)
-admin.site.register(Partnership)
+admin.site.register(Clinic, ClinicAdmin)
+admin.site.register(Scheduled_Event, ScheduledEventAdmin)
+admin.site.register(Contact, ContactAdmin)
+admin.site.register(Partnership, PartnershipAdmin)
 
 
 
