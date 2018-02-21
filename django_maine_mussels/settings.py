@@ -55,7 +55,7 @@ ROOT_URLCONF = 'django_maine_mussels.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'mussels_site', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

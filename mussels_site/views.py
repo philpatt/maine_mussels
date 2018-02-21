@@ -3,4 +3,4 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 def home(request):
-    return HttpResponse('Youz at index')
+    return render(request,'mussels_site/core/home.html')
