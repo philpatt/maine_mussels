@@ -6,93 +6,120 @@ import datetime
 # Create your models here.
 
 class Team(models.Model):
-    team_name = models.CharField(max_length=200)
-    season = models.CharField(max_length=200)
-    team_description = models.CharField(max_length=1000)
-    team_img = models.CharField(max_length=200)
+    Team_Name = models.CharField(max_length=200)
+    Season = models.CharField(max_length=200)
+    Team_Description = models.CharField(max_length=1000)
+    Team_Image = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.Team_Name
 
 class Owner(models.Model):
-    firstname = models.CharField(max_length=200)
-    lastname = models.CharField(max_length=200)
-    owner_img: models.CharField(max_length=200)
-    owner_detail_1 = models.CharField(max_length=500)
-    owner_detail_2 = models.CharField(max_length=500)
-    owner_detail_3 = models.CharField(max_length=500)
-    owner_detail_4 = models.CharField(max_length=500)
-    owner_detail_5 = models.CharField(max_length=500)
-    owner_detail_6 = models.CharField(max_length=500)
+    First_Name = models.CharField(max_length=200)
+    Last_Name = models.CharField(max_length=200)
+    Owner_Image = models.CharField(max_length=200)
+    Owner_Bio_1 = models.TextField(max_length=500)
+    Owner_Bio_2 = models.TextField(max_length=500)
+    Owner_Bio_3 = models.TextField(max_length=500)
+    
+    def __str__(self):
+        return (self.Lastname, self.Firstname)
+
 
 class Coach(models.Model):
-    firstname = models.CharField(max_length=200)
-    lastname = models.CharField(max_length=200)
-    coach_img = models.CharField(max_length=200)
-    coach_details = models.CharField(max_length=500)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    First_Name = models.CharField(max_length=200)
+    Last_Name = models.CharField(max_length=200)
+    Coach_Image = models.CharField(max_length=200)
+    Coach_Bio = models.TextField(max_length=500)
+    Team = models.ForeignKey(Team, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return (self.Lastname, self.Firstname)
+        
+class Program(models.Model):
+    Program_Title = models.CharField(max_length=200)
+    Cost = models.CharField(max_length=200)
+    Start_Date = models.DateField('start date')
+    End_Date = models.DateField('end date')
+    Program_Image = models.CharField(max_length=200)
+    Program_Detail_1 = models.TextField(max_length=500)
+    Program_Detail_2 = models.TextField(max_length=500)
+    
+    def __str__(self):
+        return (self.program_title)
 
 class Player(models.Model):
-    firstname = models.CharField(max_length=200)
-    lastname = models.CharField(max_length=200)
-    jersey_number = models.CharField(max_length=200)    
-    position = models.CharField(max_length=200)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    First_Name = models.CharField(max_length=200)
+    Last_Name = models.CharField(max_length=200)
+    Jersey_Number = models.CharField(max_length=200)    
+    Position = models.CharField(max_length=200)
+    Team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    Program = models.ForeignKey(Program, on_delete=models.CASCADE)
 
-class Program(models.Model):
-    program_title = models.CharField(max_length=200)
-    cost = models.CharField(max_length=200)
-    start_date = models.DateTimeField('start date')
-    end_date = models.DateTimeField('end date')
-    program_img = models.CharField(max_length=200)
-    program_detail_1 = models.CharField(max_length=500)
-    program_detail_2 = models.CharField(max_length=500)
-    program_detail_3 = models.CharField(max_length=500)
-    program_detail_4 = models.CharField(max_length=500)
-    program_detail_5 = models.CharField(max_length=500)
+    def __str__(self):
+        return (self.lastname, self.firstname)
+
+
+
 
 class Event(models.Model):
-    event_title = models.CharField(max_length=200)
-    event_description = models.CharField(max_length=500)
+    Event_Title = models.CharField(max_length=200)
+    Event_Description = models.CharField(max_length=500)
+    
+    def __str__(self):
+        return (self.Event_Title)
 
 class Location(models.Model):
-    location_name = models.CharField(max_length=200)
-    location_address = models.CharField(max_length=200)
+    Location_Name = models.CharField(max_length=200)
+    Location_Address = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return (self.Location_Name)
 
 class Clinic(models.Model):
-    clinic_title = models.CharField(max_length=200)
-    cost = models.CharField(max_length=200)
-    start_date = models.DateTimeField('start date')
-    end_date = models.DateTimeField('end date')
-    start_time = models.DateTimeField('start time')
-    end_time = models.DateTimeField('end time')
-    clinic_img = models.CharField(max_length=200)
-    clinic_detail_1 = models.CharField(max_length=500)
-    clinic_detail_2 = models.CharField(max_length=500)
-    clinic_detail_3 = models.CharField(max_length=500)
-    clinic_detail_4 = models.CharField(max_length=500)
-    clinic_detail_5 = models.CharField(max_length=500)
+    Clinic_Title = models.CharField(max_length=200)
+    Cost = models.CharField(max_length=200)
+    Start_Date = models.DateField('start date')
+    End_Date = models.DateField('end date')
+    Start_Time = models.TimeField('start time')
+    End_Time = models.TimeField('end time')
+    Clinic_Image = models.CharField(max_length=200)
+    Clinic_Detail_1 = models.TextField(max_length=500)
+    Clinic_Detail_2 = models.TextField(max_length=500)
 
-class Schedule(models.Model):
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    program = models.ForeignKey(Program, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    clinic = models.ForeignKey(Clinic, on_delete=models.CASCADE)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    start_date = models.DateTimeField('start date')
-    end_date = models.DateTimeField('end date')
-    start_time = models.DateTimeField('start time')
-    end_time = models.DateTimeField('end time')
-    cost = models.CharField(max_length=200)
+    def __str__(self):
+        return (self.Clinic_Title)
+
+
+class Scheduled_Event(models.Model):
+    Team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    Program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    Event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    Clinic = models.ForeignKey(Clinic, on_delete=models.CASCADE)
+    Location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    Start_Date = models.DateField('start date')
+    End_Date = models.DateField('end date')
+    Start_Time = models.TimeField('start time')
+    End_Time = models.TimeField('end time')
+    Cost = models.CharField(max_length=200)
+
+    def __str__(self):
+        return (self.Team, self.Event)
 
 class Contact(models.Model):
-    contact_type = models.CharField(max_length=200)
+    Contact_Type = models.CharField(max_length=200)
+    Contact_Url = models.CharField(max_length=200)
+    Contact_Number = models.CharField(max_length=200)
 
-class Contact_Content(models.Model):
-    contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
-    contact_url = models.CharField(max_length=200)
-    contact_number = models.CharField(max_length=200)
+    def __str__(self):
+        return (self.Contact_Type)
 
 class Partnership(models.Model):
-    partner_name = models.CharField(max_length=200)
-    parnter_website = models.CharField(max_length=200)
+    Partner_Name = models.CharField(max_length=200)
+    Parnter_Website = models.CharField(max_length=200)
+
+    def __str__(self):
+        return (self.Partner_Name)
 
 
 

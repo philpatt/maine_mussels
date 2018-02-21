@@ -1,26 +1,95 @@
 from django.contrib import admin
-from .models import Team, Owner, Coach, Player, Program, Event, Location, Clinic, Schedule, Contact, Contact_Content, Partnership
+from .models import Team, Owner, Coach, Player, Program, Event, Location, Clinic, Scheduled_Event, Contact, Partnership
 
 admin.AdminSite.site_header = "Coach Manager"
 
+# #Change order of entries
 
+# Make field sets
+class TeamAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Team', {'fields': [
+            'Team_Name',
+            'Season',
+            'Team_Description',
+            'Team_Image'
+        ]})
+    ]
 
+class OwnerAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Owner', {'fields':[
+            'First_Name',
+            'Last_Name',
+            'Owner_Bio_1',
+            'Owner_Bio_2',
+            'Owner_Bio_3',
+            'Owner_Image'
+        ]})
+    ]
 
+class CoachAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Coach', {'fields': [
+            'First_Name',
+            'Last_Name',
+            'Coach_Bio',
+            'Coach_Image'
+        ]})
+    ]
+
+class PlayerAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Player', {'fields': [
+            'First_Name',
+            'Last_Name',
+            'Position',
+            'Jersey_Number'
+        ]})
+    ]
+
+class ProgramAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Program', {'fields': [
+            'Program_Title',
+            'Cost',
+            'Start_Date',
+            'End_Date',
+            'Program_Image',
+            'Program_Detail_1',
+            'Program_Detail_2'
+            ]})
+    ]
+
+class EventAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Event', {'fields': [
+            'Event_Title',
+            'Event_Description'
+        ]})
+    ]
+
+class LocationAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Add Location', {'fields': [
+            'Location_Name',
+            'Location_Address'
+        ]})
+    ]
 
 
 
 # Register your models here.
-admin.site.register(Team)
-admin.site.register(Owner)
-admin.site.register(Coach)
-admin.site.register(Player)
-admin.site.register(Program)
-admin.site.register(Event)
-admin.site.register(Location)
+admin.site.register(Team, TeamAdmin)
+admin.site.register(Owner, OwnerAdmin)
+admin.site.register(Coach, CoachAdmin)
+admin.site.register(Player, PlayerAdmin)
+admin.site.register(Program, ProgramAdmin)
+admin.site.register(Event, EventAdmin)
+admin.site.register(Location, LocationAdmin)
 admin.site.register(Clinic)
-admin.site.register(Schedule)
+admin.site.register(Scheduled_Event)
 admin.site.register(Contact)
-admin.site.register(Contact_Content)
 admin.site.register(Partnership)
 
 
