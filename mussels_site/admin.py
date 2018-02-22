@@ -96,15 +96,15 @@ class ClinicAdmin(admin.ModelAdmin):
 
 class ScheduledEventAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Add Clinic Form', {'fields': [
+        ('Add Scheduled Event Form', {'fields': [
             'Team',
             'Program',
             'Event',
             'Clinic',
             'Location',
-            'Stat_Time',
+            'Start_Time',
             'End_Time',
-            'Stat_Date',
+            'Start_Date',
             'End_Date',
             'Cost'
         ]})
@@ -120,9 +120,8 @@ class ContactAdmin(admin.ModelAdmin):
 class PartnershipAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Add Partner/Sponsors Form', {'fields': [
-            'Contact_Type',
-            'Contact_Url',
-            'Contact_Number',
+            'Partner_Name',
+            'Parnter_Website'
         ]})
     ]
 

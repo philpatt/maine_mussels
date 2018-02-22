@@ -1,0 +1,42 @@
+body {
+    height: 800px;
+    background-color:lightgrey;
+}
+.container-full {
+    background-color: lightgrey;
+    
+}
+.banner {
+    width: 100%;
+    background-color: blue;
+}
+
+.banner-img {
+    border: 1px solid black;
+    height: 260px;
+    background-color: white;
+    overflow: hidden;
+}
+.banner-img img {
+    opacity: 0.6; 
+}
+
+.logo-img {
+    height: 200px;
+    padding: 0 !important;
+    position: absolute;
+    bottom: 30%;
+    /* left: 42%; */
+}
+
+.logo-img img{
+    height: 100%;
+    /* position: absolute;    */
+}
+
+.team-name-link {
+    height: 100px;
+    border: 1px solid black;
+    display: inline-block;
+    position: absolute;
+}

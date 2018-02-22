@@ -1,0 +1,18 @@
+
+    <footer class="footer">
+            <div class="container-full">
+                
+            </div>
+    </footer>
+
+        <div class="row">
+            {% if latest_partners %}
+                {% for p in latest_partners %}
+            <div class="col-sm-4 team-name-link">
+                    {{ p.Partner_Name }}
+            </div>
+                {% endfor %}
+            {% else %}
+            <p>No partners are available. Go get some!</p>
+            {% endif %}
+        </div>

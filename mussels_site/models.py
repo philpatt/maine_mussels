@@ -23,7 +23,7 @@ class Owner(models.Model):
     Owner_Bio_3 = models.TextField(max_length=500)
     
     def __str__(self):
-        return (self.Lastname, self.Firstname)
+        return '{0},{1}'.format(self.Last_Name, self.First_Name)
 
 
 class Coach(models.Model):
@@ -34,7 +34,8 @@ class Coach(models.Model):
     Team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
     def __str__(self):
-        return (self.Last_Name, self.First_Name)
+        return '{0},{1}'.format(self.Last_Name, self.First_Name)
+
 
 class Program(models.Model):
     Program_Title = models.CharField(max_length=200)
@@ -46,7 +47,7 @@ class Program(models.Model):
     Program_Detail_2 = models.TextField(max_length=500)
     
     def __str__(self):
-        return (self.program_title)
+        return self.Program_Title
 
 class Player(models.Model):
     First_Name = models.CharField(max_length=200)
@@ -57,21 +58,22 @@ class Player(models.Model):
     Program = models.ForeignKey(Program, on_delete=models.CASCADE)
 
     def __str__(self):
-        return (self.Last_Name, self.First_Name, self.Team)
+        return '{0},{1},{3}'.format(self.Last_Name, self.First_Name, self.Team)
+        
 
 class Event(models.Model):
     Event_Title = models.CharField(max_length=200)
     Event_Description = models.CharField(max_length=500)
     
     def __str__(self):
-        return (self.Event_Title)
+        return self.Event_Title
 
 class Location(models.Model):
     Location_Name = models.CharField(max_length=200)
     Location_Address = models.CharField(max_length=200)
     
     def __str__(self):
-        return (self.Location_Name)
+        return self.Location_Name
 
 class Clinic(models.Model):
     Clinic_Title = models.CharField(max_length=200)
@@ -82,10 +84,9 @@ class Clinic(models.Model):
     End_Time = models.TimeField('end time')
     Clinic_Image = models.CharField(max_length=200)
     Clinic_Detail_1 = models.TextField(max_length=500)
-    Clinic_Detail_2 = models.TextField(max_length=500)
 
     def __str__(self):
-        return (self.Clinic_Title)
+        return self.Clinic_Title
 
 
 class Scheduled_Event(models.Model):
@@ -99,9 +100,12 @@ class Scheduled_Event(models.Model):
     Start_Time = models.TimeField('start time')
     End_Time = models.TimeField('end time')
     Cost = models.CharField(max_length=200)
+    Description = models.TextField(max_length=500)
 
     def __str__(self):
-        return (self.Team, self.Event)
+
+        return '{0},{1},{3}'.format(self.Start_Date, self.Team, self.Event,)
+        
 
 class Contact(models.Model):
     Contact_Type = models.CharField(max_length=200)
@@ -109,14 +113,14 @@ class Contact(models.Model):
     Contact_Number = models.CharField(max_length=200)
 
     def __str__(self):
-        return (self.Contact_Type)
+        return self.Contact_Type
 
 class Partnership(models.Model):
     Partner_Name = models.CharField(max_length=200)
     Parnter_Website = models.CharField(max_length=200)
 
     def __str__(self):
-        return (self.Partner_Name)
+        return self.Partner_Name
 
 
 

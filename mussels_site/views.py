@@ -1,9 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
+from .models import Team, Owner, Coach, Player, Program, Event, Location, Clinic, Scheduled_Event, Contact, Partnership
+
+
+#base html
+def base(request):
+    latest_partners = Partnership.objects.all()
+    return render(request,'mussels_site/partials/footer.html',{'latest_partners': latest_partners})
 
 # core page views
 def home(request):
-    return render(request,'mussels_site/core/home.html')
+    latest_teams = Team.objects.all()
+    return render(request,'mussels_site/core/home.html', {'latest_teams':latest_teams})
 
 def contact(request):
     return render(request,'mussels_site/core/contact.html')
