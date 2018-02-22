@@ -3,15 +3,23 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Team, Owner, Coach, Player, Program, Event, Location, Clinic, Scheduled_Event, Contact, Partnership
 
 
-#base html
-def base(request):
+#partials
+# def footer(request):
+#     latest_partners = Partnership.objects.all()
+#     latest_teams = Team.objects.all()    
+#     return render(request,'mussels_site/partials/footer.html',{'latest_partners': latest_partners})
+
+def footer(request):
     latest_partners = Partnership.objects.all()
+    latest_teams = Team.objects.all()
     return render(request,'mussels_site/partials/footer.html',{'latest_partners': latest_partners})
 
 # core page views
 def home(request):
     latest_teams = Team.objects.all()
-    return render(request,'mussels_site/core/home.html', {'latest_teams':latest_teams})
+    latest_partners = Partnership.objects.all()
+    
+    return render(request,'mussels_site/core/home.html', {'latest_teams':latest_teams,'latest_partners': latest_partners})
 
 def contact(request):
     return render(request,'mussels_site/core/contact.html')
