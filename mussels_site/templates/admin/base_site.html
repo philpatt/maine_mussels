@@ -6,7 +6,7 @@
 {% block extrastyle %}
 <style>
     #header {
-        background-color: rgb(112,125,132);
+        background-color: lightgrey;
         color: rgb(20,8,116);
     }
     .module h2, .module caption, .inline-group h2 {
@@ -43,11 +43,23 @@
         color: rgb(20,8,116);
         font-weight: 1000;
     }
+    .button, input[type=submit], input[type=button], .submit-row input, a.button {
+        background: rgb(98,206,3);
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        color: rgb(20,8,116);
+        cursor: pointer;
+    }
+    button.default, input[type=submit].default, .submit-row input.default {
+        background: rgb(20,8,116);
+        color: rgb(98,206,3);
+    }
 </style>
 {% endblock %}
 {% block branding %}
 <h1 id="site-name">
-    <a href="{% url 'admin:index' %}"><img src="{% static 'images/mussels_logo.png' %}" alt="">Mussels Manager</a>
+    <a href="{% url 'admin:index' %}"><img src="{% static 'images/maine_mussels_lax_logo.png' %}" alt="">Mussels Manager</a>
 </h1>
 {% endblock %}
 {% block nav-global %}

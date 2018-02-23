@@ -1,34 +1,35 @@
 {% extends "mussels_site/base.html" %}
 {% load static %}
-
-
 {% block content%}
-<div class="container-full">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 banner-img">
-            <img src="{% static 'images/team_cele_Imgur.jpg' %}" class="img-responsive">
-        </div>
-        <div class="col-xs-12 col-sm-3 logo-img">
-            <img src="{% static 'images/mussels_logo.png' %}">
+    <div class="container-full">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 banner-img">
+                <img src="{% static 'images/team_cele_Imgur.jpg' %}" class="img-responsive">
+            </div>
+            <div class="col-xs-12 col-sm-3 logo-img">
+                <img src="{% static 'images/maine_mussels_logo.png' %}">
+            </div>
         </div>
     </div>
-</div>
-
-
-<div class="container">
-    <div class="row">
-        {% if latest_teams %}
-        {% for t in latest_teams %}
-        <div class="col-sm-4 team-name-link">
-            {{ t.Team_Name }}
+    <div class="container">
+        <div class="row">
+            {% if latest_teams %}
+            {% for t in latest_teams %}
+            <div class="col-sm-4 team-name-link">
+                {{ t.Team_Name }}
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-sm-4 team-name-link">
+                no team available
+            </div>
+            {% endif %}
         </div>
-        {% endfor %}
-        {% else %}
-        <div class="col-sm-4 team-name-link">
-            no team available
-        </div>
-        {% endif %}
-    </div>
+    </div
+{% endblock %}
 
-</div>
+{% block footer %}
+    <script type="text/javascript">
+        var random = 'hello'
+    </script>>
 {% endblock %}

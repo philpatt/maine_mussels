@@ -103,7 +103,6 @@ class Scheduled_Event(models.Model):
     Description = models.TextField(max_length=500)
 
     def __str__(self):
-
         return '{0},{1},{3}'.format(self.Start_Date, self.Team, self.Event,)
         
 

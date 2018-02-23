@@ -2,15 +2,17 @@ body {
     height: 800px;
     background-color:lightgrey;
 }
+.brand-img img{
+    width: 10px;
+    height: 10px;
+}
 .container-full {
-    background-color: lightgrey;
-    
+    background-color: lightgrey;   
 }
 .banner {
     width: 100%;
     background-color: blue;
 }
-
 .banner-img {
     border: 1px solid black;
     height: 260px;
@@ -20,7 +22,6 @@ body {
 .banner-img img {
     opacity: 0.6; 
 }
-
 .logo-img {
     height: 200px;
     padding: 0 !important;

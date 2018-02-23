@@ -1,12 +1,12 @@
 
-        <footer class="row">
-            {% if latest_partners %}
-                {% for p in latest_partners %}
-            <div class="col-sm-4 partner-link">
-                    {{ p.Partner_Name }}
-            </div>
-                {% endfor %}
-            {% else %}
-            <p>No partners are available. Go get some!</p>
-            {% endif %}
-        </footer>
+<footer class="row">
+    {% if partners%}
+        {% for p in partners %}
+    <div class="partner-link">
+        <a href="{{ p.Parnter_Website }}"> {{ p.Partner_Name }}</a>
+    </div>
+        {% endfor %}
+    {% else %}
+    <p>No partners are available. Go get some!</p>
+    {% endif %}
+</footer>
